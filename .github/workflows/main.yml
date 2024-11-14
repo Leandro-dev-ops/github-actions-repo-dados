@@ -37,5 +37,5 @@ jobs:
                echo "This is values send of inputs"
                echo "The version is ${{inputs.version}}"
                echo "The number card is ${{inputs.number_card}}"
-               echo "The doing_deploy is ${{inputs.doing_deploy}}"
+               echo "Must doing_deploy is ${{inputs.doing_deploy}}"
                echo "The enviroment is ${{inputs.enviroment}}"

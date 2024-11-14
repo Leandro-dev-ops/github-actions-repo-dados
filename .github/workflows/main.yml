@@ -1,0 +1,41 @@
+name: "Input example"
+run-name: Example workflow for input, execute for ${{github.actor}}
+on:
+    workflow_dispatch: 
+        inputs:
+            version:
+                type: string
+                required: true
+                default: "dev"
+                description: "Version new release!"
+            number_card:
+                type: number
+                required: true
+                default: 2
+                description: "Card number"
+            doing_deploy:
+                type: boolean
+                required: true
+                description: "Doing current deploy?"
+            enviroment:
+                type: choice
+                options:
+                    - dev
+                    - hom
+                    - prod
+                default: dev
+                required: true
+                description: "Choice your enviroment deploy!"
+jobs:
+    input-values:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show context completed input!
+              run: echo "${{ toJson(inputs) }}"
+            - name: Show individual values
+              run: |
+               echo "This is values send of inputs"
+               echo "The version is ${{inputs.version}}"
+               echo "The number card is ${{inputs.number_card}}"
+               echo "The doing_deploy is ${{inputs.doing_deploy}}"
+               echo "The enviroment is ${{inputs.enviroment}}"
